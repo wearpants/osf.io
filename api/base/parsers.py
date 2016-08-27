@@ -43,7 +43,7 @@ class JSONAPIParser(JSONParser):
             raise JSONAPIException(source={'pointer': 'data/relationships/{}/data/type'.format(related_resource)}, detail=NO_TYPE_ERROR)
 
         id = data.get('id')
-        return {'id': id, 'target_type': target_type}
+        return {'relationship_id': id, 'relationship_target_type': target_type}
 
     def flatten_data(self, resource_object, parser_context, is_list):
         """

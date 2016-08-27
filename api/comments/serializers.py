@@ -116,12 +116,12 @@ class CommentSerializer(JSONAPISerializer):
         return comment
 
     def get_target_type(self, obj):
-        if not getattr(obj.referent, 'target_type', None):
+        if not getattr(obj.referent, 'relationship_target_type', None):
             raise InvalidModelValueError(
                 source={'pointer': '/data/relationships/target/links/related/meta/type'},
                 detail='Invalid comment target type.'
             )
-        return obj.referent.target_type
+        return obj.referent.relationship_target_type
 
     def sanitize_data(self):
         ret = super(CommentSerializer, self).sanitize_data()
